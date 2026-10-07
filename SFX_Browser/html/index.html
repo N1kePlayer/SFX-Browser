@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../css/style.css"></head>
+<body>
+  <header>
+    <div class="title">SFX <span>BROWSER</span></div>
+    <button id="favoritesToggle" class="headerBtn" title="Show favorites">★ FAVORITES</button>
+    <button id="hiddenToggle" class="headerBtn" title="Hidden items">HIDDEN</button>
+    <button id="addFolder" title="Add folder">＋</button>
+  </header>
+  <div class="workspace">
+    <main class="browserPane">
+      <div class="toolbar"><input id="search" placeholder="Search by name…"><button id="stop" title="Stop preview">■</button></div>
+      <div id="modeBanner" class="modeBanner" style="display:none"><span>★ FAVORITES</span><button id="favoritesClose">×</button></div>
+      <div id="roots"></div>
+      <div id="empty" class="empty">Add your SFX folder with ＋<br><small>Your folder names and structure stay exactly as they are.</small></div>
+    </main>
+
+    <aside id="inspector" class="inspector disabled">
+      <div class="previewBox">
+        <canvas id="waveform" width="700" height="180"></canvas>
+        <div id="previewPlayhead" class="previewPlayhead"></div>
+        <div id="waveEmpty" class="waveEmpty">Select a sound</div>
+      </div>
+      <button id="addToTimeline" class="addBtn" disabled>ADD</button>
+
+      <div class="volumeRow">
+        <span>PREVIEW</span>
+        <input id="volume" type="range" min="0" max="100" value="85">
+        <span id="volumeValue">85%</span>
+      </div>
+
+      <div id="fileInfo" class="fileInfo">
+        <div><span>FILE</span><b id="infoName">—</b></div>
+        <div><span>FORMAT</span><b id="infoFormat">—</b></div>
+        <div><span>DURATION</span><b id="infoDuration">—</b></div>
+        <div><span>SIZE</span><b id="infoSize">—</b></div>
+        <div><span>AUDIO</span><b id="infoAudio">—</b></div>
+        <div class="pathLine"><span>PATH</span><b id="infoPath">—</b></div>
+      </div>
+
+      <div class="notesBlock">
+        <label for="notes">NOTES</label>
+        <textarea id="notes" placeholder="Add a note for this sound…" disabled></textarea>
+      </div>
+    </aside>
+  </div>
+  <footer><span id="status">Ready</span></footer>
+  <div id="contextMenu" class="contextMenu"></div>
+  <div id="hiddenPanel" class="hiddenPanel">
+    <div class="hiddenHeader"><b>HIDDEN ITEMS</b><button id="hiddenClose">×</button></div>
+    <div id="hiddenList"></div>
+  </div>
+  <audio id="audio"></audio>
+<script src="CSInterface.js"></script><script src="../js/main.js"></script>
+</body></html>
