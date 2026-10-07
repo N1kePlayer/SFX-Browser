@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' blob: data:">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SFX Browser</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="6" fill="currentColor" opacity=".16"/><path d="M6 13v-2M9 16V8M12 18V6M15 15V9M18 13v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 20 20"><path d="M2.5 5.5c0-.83.67-1.5 1.5-1.5h3.6l1.7 2H16c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5H4c-.83 0-1.5-.67-1.5-1.5v-9Z" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-folder-open" viewBox="0 0 20 20"><path d="M2.5 14.5v-9c0-.83.67-1.5 1.5-1.5h3.6l1.7 2H15c.83 0 1.5.67 1.5 1.5V8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M4.3 8.5h13.2l-2.1 7H2.5l1.8-7Z" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-drive" viewBox="0 0 20 20"><rect x="2.5" y="4" width="15" height="12" rx="2.5" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 12.5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="14" cy="12.5" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 16 16"><path d="m6 4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 20 20"><path d="m10 2.8 2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L2.8 8.1l5-.7L10 2.8Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 20 20"><path d="M3 3l14 14M8.3 5.2A8.6 8.6 0 0 1 10 5c4.5 0 7.5 5 7.5 5a13 13 0 0 1-2.3 2.8M12.1 12.2A3 3 0 0 1 7.8 7.9M5.4 6.6C3.6 7.9 2.5 10 2.5 10s3 5 7.5 5c1.2 0 2.3-.3 3.3-.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 20 20"><circle cx="9" cy="9" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m13.2 13.2 3.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 20 20"><path d="m5.5 5.5 9 9m0-9-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 20 20"><path d="M6.5 4.5v11a.8.8 0 0 0 1.2.7l8.6-5.5a.8.8 0 0 0 0-1.4L7.7 3.8a.8.8 0 0 0-1.2.7Z" fill="currentColor"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 20 20"><rect x="5" y="5" width="10" height="10" rx="1.8" fill="currentColor"/></symbol>
+  <symbol id="i-volume" viewBox="0 0 20 20"><path d="M3.5 8v4h3l4 3.5v-11l-4 3.5h-3Z" fill="currentColor"/><path d="M13.5 7.2a4 4 0 0 1 0 5.6M15.6 5.2a7 7 0 0 1 0 9.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-timeline" viewBox="0 0 20 20"><rect x="2.5" y="4" width="9" height="4" rx="1" fill="currentColor" opacity=".55"/><rect x="2.5" y="11" width="6" height="4" rx="1" fill="currentColor" opacity=".55"/><path d="M15 9.5v6M12 12.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-reveal" viewBox="0 0 20 20"><path d="M11 3.5h5.5V9M16.5 3.5 9 11M14 12v3a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 4 15V8a1.5 1.5 0 0 1 1.5-1.5h3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 20 20"><rect x="7" y="7" width="9.5" height="9.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M13 4.5V4a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 4v6.5A1.5 1.5 0 0 0 5 12h.5" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-note" viewBox="0 0 20 20"><path d="M5 3.5h7l3.5 3.5v9.5H5v-13Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M7.5 10h5M7.5 13h3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo"><use href="#i-logo"/></svg>
+      <div class="brandText"><b>SFX Browser</b><span>for DaVinci Resolve</span></div>
+    </div>
+    <nav class="seg" role="tablist">
+      <button role="tab" data-view="library" class="on">Library</button>
+      <button role="tab" data-view="favorites">Favorites<span class="count" id="favCount"></span></button>
+    </nav>
+    <div class="spacer"></div>
+    <button class="iconBtn" id="hiddenToggle" title="Hidden items"><svg><use href="#i-eye-off"/></svg><span class="badge" id="hiddenCount"></span></button>
+    <button class="btn" id="addFolder" title="Add an SFX folder"><svg><use href="#i-plus"/></svg><span>Add folder</span></button>
+  </header>
+
+  <div class="workspace" id="workspace">
+    <section class="browser">
+      <div class="searchBar">
+        <svg class="searchIcon"><use href="#i-search"/></svg>
+        <input id="search" type="text" placeholder="Search all folders…" spellcheck="false" autocomplete="off">
+        <kbd id="searchKbd">/</kbd>
+        <button id="searchClear" class="ghost" title="Clear search"><svg><use href="#i-close"/></svg></button>
+      </div>
+      <div id="crumb" class="crumb"></div>
+      <div id="list" class="list" tabindex="0"></div>
+      <div id="empty" class="empty"></div>
+    </section>
+
+    <div class="splitter" id="splitter" title="Drag to resize"></div>
+
+    <aside class="inspector" id="inspector">
+      <div class="insHead">
+        <div class="insTitle">
+          <h2 id="infoName">No sound selected</h2>
+          <div class="sub" id="infoSub">Pick a sound in the browser to preview it</div>
+        </div>
+        <button class="iconBtn star" id="favBtn" title="Add to favorites" disabled><svg><use href="#i-star"/></svg></button>
+      </div>
+
+      <div class="wave" id="wave">
+        <canvas id="waveCanvas"></canvas>
+        <div class="hoverLine" id="waveHover"></div>
+        <div class="cursor" id="waveCursor"></div>
+        <div class="waveMsg" id="waveMsg">No preview</div>
+        <div class="time"><span id="timePos">0:00.00</span><span class="dim"> / </span><span id="timeDur">0:00.00</span></div>
+      </div>
+
+      <div class="transport">
+        <button class="round" id="playBtn" title="Play / Stop (Space)" disabled><svg><use href="#i-play"/></svg></button>
+        <div class="vol">
+          <svg><use href="#i-volume"/></svg>
+          <input type="range" id="volume" min="0" max="100" value="85">
+          <span id="volumeValue">85%</span>
+        </div>
+        <label class="toggle" title="Play sounds as soon as they are selected"><input type="checkbox" id="autoplay" checked><span class="track"></span>Autoplay</label>
+      </div>
+
+      <button class="primary" id="addBtn" disabled><svg><use href="#i-timeline"/></svg>Add to Timeline</button>
+      <p class="hint">Places the sound at the playhead on the lowest free audio track. You can also drag a sound straight into Resolve.</p>
+
+      <dl class="meta">
+        <div><dt>Format</dt><dd id="infoFormat">—</dd></div>
+        <div><dt>Duration</dt><dd id="infoDuration">—</dd></div>
+        <div><dt>Sample rate</dt><dd id="infoRate">—</dd></div>
+        <div><dt>Channels</dt><dd id="infoChannels">—</dd></div>
+        <div><dt>Bit depth</dt><dd id="infoBits">—</dd></div>
+        <div><dt>Size</dt><dd id="infoSize">—</dd></div>
+      </dl>
+
+      <div class="pathRow">
+        <code id="infoPath">—</code>
+        <button class="iconBtn sm" id="revealBtn" title="Show in folder" disabled><svg><use href="#i-reveal"/></svg></button>
+        <button class="iconBtn sm" id="copyBtn" title="Copy path" disabled><svg><use href="#i-copy"/></svg></button>
+      </div>
+
+      <div class="notes">
+        <label for="notes">Notes</label>
+        <textarea id="notes" placeholder="Add a note for this sound…" disabled></textarea>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="statusbar">
+    <span class="conn" id="conn" title="DaVinci Resolve connection"><i></i><span id="connText">Connecting to Resolve…</span></span>
+    <span class="status" id="status">Ready</span>
+    <span class="keys"><kbd>↑</kbd><kbd>↓</kbd> browse <kbd>Space</kbd> play</span>
+  </footer>
+</div>
+
+<div class="menu" id="menu"></div>
+
+<div class="popover" id="hiddenPanel">
+  <div class="popHead"><b>Hidden items</b><button class="iconBtn sm" id="hiddenClose" title="Close"><svg><use href="#i-close"/></svg></button></div>
+  <div id="hiddenList" class="popList"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/audio.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

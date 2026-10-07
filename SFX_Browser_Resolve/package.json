@@ -1,0 +1,11 @@
+{
+  "name": "sfx-browser-resolve",
+  "version": "1.0.0",
+  "description": "SFX Browser — DaVinci Resolve Studio Workflow Integration plugin",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "check": "node --check main.js && node --check preload.js && node --check lib/resolve.js && node --check lib/library.js && node --check js/audio.js && node --check js/app.js",
+    "test": "node --test test/*.test.js"
+  }
+}
